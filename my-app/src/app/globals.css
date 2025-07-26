@@ -1,0 +1,188 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global styles */
+html, body {
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  background-color: #0A1128;
+  color: #F8F8F8;
+  overflow-x: hidden;
+}
+
+/* Hero Section Adjustments for left alignment and full height on desktop */
+.hero-section {
+  min-height: 85vh;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  display: flex;
+  flex-direction: column; /* Stack on mobile */
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* Center text on mobile */
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 768px) {
+  .hero-section {
+    height: 100vh;
+    min-height: unset;
+    padding-top: 0;
+    padding-bottom: 0;
+    flex-direction: row; /* Side-by-side on desktop */
+    justify-content: space-between; /* Space out content on desktop */
+    align-items: center; /* Center vertically on desktop */
+    padding-left: 6rem; /* Add some padding for desktop layout */
+    padding-right: 6rem;
+  }
+}
+
+/* Logo Container Adjustments */
+.jo-logo-container {
+  position: relative;
+  max-width: 90%;
+  width: 350px; /* Increased initial width for mobile */
+  height: auto;
+  aspect-ratio: 500 / 300;
+  overflow: hidden;
+  margin-left: auto; /* Center on mobile */
+  margin-right: auto; /* Center on mobile */
+}
+
+@media (min-width: 768px) {
+  .jo-logo-container {
+    width: 700px; /* Significantly increased width for desktop */
+    margin-left: 0; /* Align with flexbox */
+    margin-right: 0; /* Align with flexbox */
+  }
+}
+
+.jo-logo {
+  animation: logoReveal 3s ease-out forwards;
+  transform-origin: center;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@keyframes logoReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) translateY(20px);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05) translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hero-text-animate {
+  animation: textFadeIn 2s ease-out forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes textFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-up-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.shimmer-text {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.shimmer-text::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: -100%;
+  }
+}
+
+.bg-particles::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top left, rgba(201,176,114,0.1) 0%, transparent 50%), radial-gradient(circle at bottom right, rgba(76,175,80,0.1) 0%, transparent 50%);
+  animation: bgPulse 15s infinite alternate ease-in-out;
+  z-index: -1;
+}
+
+@keyframes bgPulse {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+button, a {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav a {
+  min-width: unset;
+  min-height: unset;
+}
+
+/* Service Card Hover Effects */
+.service-card {
+  transition: all 0.3s ease;
+}
+
+.service-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
